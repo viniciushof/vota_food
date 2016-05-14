@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Restaurantes</title>
+</head>
+<body>
+<h1>Restaurantes</h1>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Nome</th>
+			<th>Endereço</th>
+			<th>Especialidade</th>
+			<th>Página</th>
+		</tr>
+		<% if @restaurantes.empty? %>
+			<p>Essa lista não possui elementos</p>
+		<%else%>
+			<% @restaurantes.each do |restaurante| %>
+				<tr>
+					<td><%=restaurante.id%></td>
+					<td><%=restaurante.nome%></td>
+					<td><%=restaurante.endereco%></td>
+					<td><%=restaurante.especialidade%></td>
+					<td><%= link_to "Detalhes", restaurante_path(restaurante) %></td>
+					<td><%= link_to "Excluir", {action: 'destroy', id: restaurante}, {method: "delete"} %></td>
+				</tr>
+			<%end%>
+		<%end%>
+	</table>
+	<%= link_to "Novo Restaurante", new_restaurante_path %>
+</body>
+</html>

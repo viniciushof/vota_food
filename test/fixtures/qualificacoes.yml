@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nota: 
+  valor_gasto: 1.5
+
+two:
+  nota: 
+  valor_gasto: 1.5
