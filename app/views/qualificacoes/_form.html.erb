@@ -32,14 +32,16 @@
   <div class="form-group">
     <%= f.label :restaurante_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :restaurante_id, :class => 'form-control' %>
+      <!-- <%= f.text_field :restaurante_id, :class => 'form-control' %> -->
+      <%= f.collection_select(:restaurante_id,Restaurante.order(:nome), :id, :nome, {prompt: "Selecione um restaurante"}, {class: "form-control"}) %>
     </div>
     <%=f.error_span(:restaurante_id) %>
   </div>
   <div class="form-group">
     <%= f.label :cliente_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :cliente_id, :class => 'form-control' %>
+      <!-- <%= f.text_field :cliente_id, :class => 'form-control' %> -->
+      <%= f.collection_select(:cliente_id, Cliente.order(:nome),:id, :nome, {prompt: "Selecione o campo"}, {class: "form-control"}) %>
     </div>
     <%=f.error_span(:cliente_id) %>
   </div>
