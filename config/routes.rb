@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :receitas
   resources :pratos
   resources :restaurantes
   resources :qualificacoes
