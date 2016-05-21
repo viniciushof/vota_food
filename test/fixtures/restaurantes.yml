@@ -1,7 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+ponto_da_picanha:
+ nome: Ponto da Picanha
+ endereco: Avenida Brasil
+ especialidade: Churrasco
 
-one:
-  nome: MyString
-
-two:
-  nome: MyString
+kbab:
+ nome: Kbab
+ endereco: Turco
+ especialidade: Árabe

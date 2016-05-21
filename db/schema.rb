@@ -14,17 +14,19 @@
 ActiveRecord::Schema.define(version: 20160514135448) do
 
   create_table "clientes", force: :cascade do |t|
-    t.string   "nome",            limit: 255
-    t.date     "data_nascimento"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.string   "nome",            limit: 50, null: false
+    t.date     "data_nascimento",            null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "pratos", force: :cascade do |t|
-    t.string   "nome",       limit: 255
+    t.string   "nome",       limit: 255, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  add_index "pratos", ["nome"], name: "index_pratos_on_nome", unique: true, using: :btree
 
   create_table "pratos_restaurantes", id: false, force: :cascade do |t|
     t.integer "prato_id",       limit: 4
@@ -32,8 +34,8 @@ ActiveRecord::Schema.define(version: 20160514135448) do
   end
 
   create_table "qualificacoes", force: :cascade do |t|
-    t.integer  "nota",           limit: 4
-    t.float    "valor_gasto",    limit: 24
+    t.integer  "nota",           limit: 4,  null: false
+    t.float    "valor_gasto",    limit: 24, null: false
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "restaurante_id", limit: 4
@@ -41,7 +43,7 @@ ActiveRecord::Schema.define(version: 20160514135448) do
   end
 
   create_table "receitas", force: :cascade do |t|
-    t.text     "conteudo",   limit: 65535
+    t.text     "conteudo",   limit: 65535, null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "prato_id",   limit: 4

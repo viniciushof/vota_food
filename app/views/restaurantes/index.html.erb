@@ -5,7 +5,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
+      <!-- <th><%= model_class.human_attribute_name(:id) %></th> -->
       <th><%= model_class.human_attribute_name(:nome) %></th>
       <th><%= model_class.human_attribute_name(:endereco) %></th>
       <th><%= model_class.human_attribute_name(:especialidade) %></th>
@@ -16,8 +16,8 @@
   <tbody>
     <% @restaurantes.each do |restaurante| %>
       <tr>
-        <td><%= link_to restaurante.id, restaurante_path(restaurante) %></td>
-        <td><%= restaurante.nome %></td>
+        <!-- <td><%= link_to restaurante.id, restaurante_path(restaurante) %></td> -->
+        <td><%= link_to restaurante.nome, restaurante_path(restaurante) %></td>        
         <td><%= restaurante.endereco %></td>
         <td><%= restaurante.especialidade %></td>
         <td><%=l restaurante.created_at %></td>

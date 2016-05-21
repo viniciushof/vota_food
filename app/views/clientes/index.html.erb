@@ -5,18 +5,18 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
+      <!-- <th><%= model_class.human_attribute_name(:id) %></th> -->
       <th><%= model_class.human_attribute_name(:nome) %></th>
       <th><%= model_class.human_attribute_name(:data_nascimento) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name("Cliente ativo desde") %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @clientes.each do |cliente| %>
       <tr>
-        <td><%= link_to cliente.id, cliente_path(cliente) %></td>
-        <td><%= cliente.nome %></td>
+        <!-- <td><%= link_to cliente.id, cliente_path(cliente) %></td> -->
+        <td><%= link_to cliente.nome, cliente_path(cliente) %></td>
         <td><%= cliente.data_nascimento %></td>
         <td><%=l cliente.created_at %></td>
         <td>
