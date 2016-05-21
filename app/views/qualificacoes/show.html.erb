@@ -1,24 +1,25 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Qualificacao -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Cliente:</strong>
-  <%= @qualificacao.cliente_id %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:nota) %>:</strong></dt>
+  <dd><%= @qualificacao.nota %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:valor_gasto) %>:</strong></dt>
+  <dd><%= @qualificacao.valor_gasto %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:restaurante_id) %>:</strong></dt>
+  <dd><%= @qualificacao.restaurante_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cliente_id) %>:</strong></dt>
+  <dd><%= @qualificacao.cliente_id %></dd>
+</dl>
 
-<p>
-  <strong>Restaurante:</strong>
-  <%= @qualificacao.restaurante_id %>
-</p>
-
-<p>
-  <strong>Nota:</strong>
-  <%= @qualificacao.nota %>
-</p>
-
-<p>
-  <strong>Valor gasto:</strong>
-  <%= @qualificacao.valor_gasto %>
-</p>
-
-<%= link_to 'Edit', edit_qualificacao_path(@qualificacao) %> |
-<%= link_to 'Back', qualificacoes_path %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              qualificacoes_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_qualificacao_path(@qualificacao), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              qualificacao_path(@qualificacao),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

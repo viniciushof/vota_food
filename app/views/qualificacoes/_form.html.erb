@@ -1,33 +1,55 @@
-<%= form_for(@qualificacao) do |f| %>
-  <% if @qualificacao.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@qualificacao.errors.count, "error") %> prohibited this qualificacao from being saved:</h2>
+<%= form_for @qualificacao, :html => { :class => "form-horizontal qualificacao" } do |f| %>
 
-      <ul>
-      <% @qualificacao.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <% if @qualificacao.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@qualificacao.errors.count, "error") %> prohibited this qualificacao from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @qualificacao.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :cliente_id %><br>
-    <%= f.number_field :cliente_id %>
+  <div class="form-group">
+    <%= f.label :nota, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :nota, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:nota) %>
   </div>
-  <div class="field">
-    <%= f.label :restaurante_id %><br>
-    <%= f.number_field :restaurante_id %>
+  <div class="form-group">
+    <%= f.label :valor_gasto, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :valor_gasto, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:valor_gasto) %>
   </div>
-  <div class="field">
-    <%= f.label :nota %><br>
-    <%= f.text_field :nota %>
+  <div class="form-group">
+    <%= f.label :restaurante_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :restaurante_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:restaurante_id) %>
   </div>
-  <div class="field">
-    <%= f.label :valor_gasto %><br>
-    <%= f.text_field :valor_gasto %>
+  <div class="form-group">
+    <%= f.label :cliente_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :cliente_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:cliente_id) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                qualificacoes_path, :class => 'btn btn-default' %>
+    </div>
   </div>
+
 <% end %>

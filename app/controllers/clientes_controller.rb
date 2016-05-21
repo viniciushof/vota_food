@@ -1,5 +1,6 @@
 class ClientesController < ApplicationController
   before_action :set_cliente, only: [:show, :edit, :update, :destroy]
+  around_action :antes_e_depois
 
   # GET /clientes
   # GET /clientes.json
@@ -70,5 +71,11 @@ class ClientesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def cliente_params
       params.require(:cliente).permit(:nome, :data_nascimento)
+    end
+
+    def antes_e_depois
+      logger.info "Antes de #{params[:action]} : #{Time.now}"
+      yield
+      logger.info "Depois de #{params[:action]} : #{Time.now}"
     end
 end
