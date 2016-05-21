@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :clientes
   root to: 'restaurantes#index'
   match 'inicio' => 'restaurantes#index', via: 'get'
   resources :restaurantes
