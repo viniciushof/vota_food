@@ -15,9 +15,9 @@ RSpec.describe Cliente, type: :model do
 	it "is valid when data_nascimento is after 31/12/1999"
 	describe "it can filter nome by letter" do
 		before :each do
-			@felipe = Cliente.create(nome: “Felipe”, data_nascimento: Date.new(2000, 12, 31))
-			@joao = Cliente.create(	nome: “João”, data_nascimento: Date.new(2005, 12, 10))
-			@fernando = Cliente.create(nome: “Fernando”, data_nascimento: Date.new(2013, 2, 1))
+			@felipe = Cliente.create(nome: "Felipe", data_nascimento: Date.new(2000, 12, 31))
+			@joao = Cliente.create(	nome: "João", data_nascimento: Date.new(2005, 12, 10))
+			@fernando = Cliente.create(nome: "Fernando", data_nascimento: Date.new(2013, 2, 1))
 		end
 		context "matching letter" do
 			# Testa se incluiu corretamente
