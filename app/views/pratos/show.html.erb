@@ -5,5 +5,12 @@
   <%= @prato.nome %>
 </p>
 
+<%= novo_comentario @prato %>
+
+<div id="comentarios">
+	<h3>Comentários:</h3>
+	<%= render @prato.comentarios %>
+</div>
+
 <%= link_to 'Edit', edit_prato_path(@prato) %> |
 <%= link_to 'Back', pratos_path %>

@@ -38,28 +38,26 @@
   </head>
   <body>
 
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">VotaFood</a>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <%= nav_bar static: :top, brand: "VotaFood" do %>
-            <%= menu_group do %>
-              <%= menu_item "Home", root_path %>
-              <%= menu_item "Restaurantes", restaurantes_path %>
-              <%= menu_item "Clientes", clientes_path %>
-              <%= menu_item "Qualificações", qualificacoes_path %>
-              <%= menu_item "Pratos", pratos_path %>
-              <%= menu_item "Receitas", receitas_path %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
+    <%= nav_bar static: :top, brand: "VotaFood" do %>
+<%= menu_group do %>
+<%= menu_item "Home", root_path %>
+<%= menu_item "Restaurantes", restaurantes_path %>
+<%= menu_item "Clientes", clientes_path %>
+<%= menu_item "Qualificações", qualificacoes_path %>
+<%= menu_item "Pratos", pratos_path %>
+<% end %>
+<% if current_usuario %>
+<%= menu_group pull: :right do %>
+<%= menu_item "Log Out", destroy_usuario_session_path,
+:method => :delete %>
+<% end %>
+<% else %>
+<%= menu_group pull: :right do %>
+<%= menu_item "Cadastre-se", new_usuario_registration_path %>
+<%= menu_item "Login", new_usuario_session_path %>
+<% end %>
+<% end %>
+<% end %>
 
     <div class="container">
       <div class="row">
@@ -74,6 +72,8 @@
       </footer>
 
     </div> <!-- /container -->
-
+    <script type="text/javascript">
+      <%= yield :js %>
+    </script>
   </body>
 </html>

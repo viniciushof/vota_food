@@ -22,13 +22,11 @@
         <td><%= restaurante.especialidade %></td>
         <td><%=l restaurante.created_at %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_restaurante_path(restaurante), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      restaurante_path(restaurante),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+          <% if current_usuario %>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+            edit_restaurante_path(restaurante), :class => 'btn btn-default btn-xs' %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")), restaurante_path(restaurante),:method => :delete,:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm",:default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger' %>
+          <% end %>
         </td>
       </tr>
     <% end %>

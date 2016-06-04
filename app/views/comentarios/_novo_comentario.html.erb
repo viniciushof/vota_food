@@ -1,0 +1,18 @@
+<% if usuario_signed_in? %>
+	<%= form_for Comentario.new, remote: true do |f| %>
+		<%= f.hidden_field :comentavel_id, value: comentavel.id %>
+		<%= f.hidden_field :comentavel_type, value: comentavel.class %>
+		<%= f.label :conteudo %> <br />
+		<%= f.text_area :conteudo %>
+		<div>
+			<%= f.submit %>		
+		</div>
+	<% end %>
+
+	<% content_for :js do %>
+		$('form').bind('ajax:complete', function(xhr, result){
+		$('#comentarios').html(result.responseText);
+		$('textarea').val("");
+	});
+	<% end %>
+<%end%>

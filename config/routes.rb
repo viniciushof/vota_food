@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :usuarios
+  resources :comentarios
   resources :receitas
   resources :pratos
   resources :restaurantes

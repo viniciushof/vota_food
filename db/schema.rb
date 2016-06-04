@@ -11,22 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160514135448) do
+ActiveRecord::Schema.define(version: 20160604184008) do
 
   create_table "clientes", force: :cascade do |t|
-    t.string   "nome",            limit: 50, null: false
-    t.date     "data_nascimento",            null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "nome",            limit: 255
+    t.date     "data_nascimento"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "comentarios", force: :cascade do |t|
+    t.text     "conteudo",        limit: 65535
+    t.integer  "comentavel_id",   limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "comentavel_type", limit: 255
+    t.integer  "usuario_id",      limit: 4
   end
 
   create_table "pratos", force: :cascade do |t|
-    t.string   "nome",       limit: 255, null: false
+    t.string   "nome",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
-
-  add_index "pratos", ["nome"], name: "index_pratos_on_nome", unique: true, using: :btree
 
   create_table "pratos_restaurantes", id: false, force: :cascade do |t|
     t.integer "prato_id",       limit: 4
@@ -34,8 +41,8 @@ ActiveRecord::Schema.define(version: 20160514135448) do
   end
 
   create_table "qualificacoes", force: :cascade do |t|
-    t.integer  "nota",           limit: 4,  null: false
-    t.float    "valor_gasto",    limit: 24, null: false
+    t.integer  "nota",           limit: 4
+    t.float    "valor_gasto",    limit: 24
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "restaurante_id", limit: 4
@@ -43,7 +50,7 @@ ActiveRecord::Schema.define(version: 20160514135448) do
   end
 
   create_table "receitas", force: :cascade do |t|
-    t.text     "conteudo",   limit: 65535, null: false
+    t.text     "conteudo",   limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "prato_id",   limit: 4
@@ -56,5 +63,23 @@ ActiveRecord::Schema.define(version: 20160514135448) do
     t.string   "endereco",      limit: 255
     t.string   "especialidade", limit: 40
   end
+
+  create_table "usuarios", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+  end
+
+  add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree
+  add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true, using: :btree
 
 end

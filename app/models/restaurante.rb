@@ -5,6 +5,7 @@ class Restaurante < ActiveRecord::Base
 	validates_presence_of :nome, :especialidade
 	validates_size_of :especialidade, maximum: 40
 	validate :primeira_letra_deve_ser_maiuscula
+	has_many :comentarios, as: :comentavel
 
 	private
 	def primeira_letra_deve_ser_maiuscula
